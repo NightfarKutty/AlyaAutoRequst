@@ -2,6 +2,23 @@ from os import environ
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ChatJoinRequest, CallbackQuery
 from pyrogram.errors import UserPrivacyRestricted
+from os import environ
+import threading
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+class Keeper(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is Alive!")
+
+def run_port():
+    server = HTTPServer(('0.0.0.0', int(environ.get("PORT", 8080))), Keeper)
+    server.serve_forever()
+
+threading.Thread(target=run_port, daemon=True).start()
+
+# --- Main Bot Code By Alone Kutty ---
 
 pr0fess0r_99 = Client(
     "Auto Approved Bot",
