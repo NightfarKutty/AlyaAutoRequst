@@ -1,11 +1,11 @@
 from os import environ
+import threading
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ChatJoinRequest, CallbackQuery
 from pyrogram.errors import UserPrivacyRestricted
-from os import environ
-import threading
-from http.server import BaseHTTPRequestHandler, HTTPServer
 
+# --- Web Service Port Binding (Render போர்ட் எரர் வராமல் தடுக்க) ---
 class Keeper(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -20,14 +20,15 @@ threading.Thread(target=run_port, daemon=True).start()
 
 # --- Main Bot Code By Alone Kutty ---
 
+# ⚠️ இங்கே environ[...] நீக்கப்பட்டு, உங்களுடைய எண்கள் மற்றும் டோக்கன் நேரடியாகச் சேர்க்கப்பட்டுள்ளது.
 pr0fess0r_99 = Client(
     "Auto Approved Bot",
-    bot_token = environ["8527654246:AAESrxK56QN9P54k2UE2THMfmh_Y3pTLkPY"],
-    api_id = int(environ["34358468"]),
-    api_hash = environ["98eae42531ae122648f7cd930c458661"]
+    bot_token = "8527654246:AAESrxK56QN9P54k2UE2THMfmh_Y3pTLkPY",
+    api_id = 34358468,
+    api_hash = "98eae42531ae122648f7cd930c458661"
 )
 
-CHAT_ID = [int(pr0fess0r_99) for pr0fess0r_99 in environ.get("CHAT_ID", None).split()]
+CHAT_ID = [int(x) for x in environ.get("CHAT_ID", "").split() if x.isdigit()]
 TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
@@ -35,7 +36,7 @@ APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 START_IMAGE_URL = "https://graph.org/file/a633dd3e3d423506f2c3a-bd2a06710bc9ad8884.jpg"
 ACCEPT_IMAGE_URL = "https://graph.org/file/f96a490cd143e6e11ff1a-7b378174a3d79ff84b.jpg"
 
-ABOUT_TXT = "<b><blockquote>◈ ᴄʀᴇᴀᴛᴏʀ: <a href=https://t.me/KuttyHacker>ɴꜰᴛ ᴋᴜᴛᴛʏ</a>\n◈ ɴɪɢʜᴛꜰᴀʀ ɴᴇᴛᴡᴏʀᴋ : <a href=https://t.me/NightFarBots>ɴꜰᴛ ᴛᴇᴀᴍ</a>\n◈ ᴛᴀᴍɪʟ ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/KuttyAnimes> ᴋᴜᴛᴛʏ ᴀɴɪᴍᴇꜱ</a>\n◈ ᴀɴɪᴍᴇ ʀᴇ𝚀ᴜꜱᴛ ɢʀᴏᴜᴩ : <a href=https://t.me/Pro_KuttyAnimes>ᴛᴀᴍɪʟ ᴄʜᴀᴛ ᴋᴀᴄ</a>\n◈ ᴛᴀᴍɪʟ ᴍᴏᴠɪᴇꜱ : <a href=https://t.me/UnixLinks>ᴜɴɪ𝘹 ʟɪɴᴋꜱ</a>\n◈ ꜰᴜɴ ᴛᴀᴍɪʟ ᴄʜᴀᴛ : <a href=https://t.me/TamilChat_Friendship_47>ʟɪᴛᴛʟᴇ ʜᴇᴀʀᴛꜱ</a></blockquote></b>"
+ABOUT_TXT = "<b><blockquote>◈ ᴄʀᴇᴀᴛᴏʀ: <a href=https://t.me/KuttyHacker>ɴꜰᴛ ᴋᴜᴛᴛʏ</a>\n◈ ɴɪɢʜᴛꜰᴀʀ ɴᴇᴛᴡᴏʀᴋ : <a href=https://t.me/NightFarBots>ɴꜰᴛ ᴛᴇᴀᴍ</a>\n◈ ᴛᴀᴍɪʟ ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/KuttyAnimes> ᴋᴜᴛty ᴀɴɪᴍᴇꜱ</a>\n◈ ᴀɴɪᴍᴇ ʀᴇ𝚀ᴜꜱᴛ ɢʀᴏᴜᴩ : <a href=https://t.me/Pro_KuttyAnimes>ᴛᴀᴍɪʟ ᴄʜᴀᴛ ᴋᴀᴄ</a>\n◈ ᴛᴀᴍɪʟ ᴍᴏᴠɪᴇꜱ : <a href=https://t.me/UnixLinks>ᴜɴɪ𝘹 ʟɪɴᴋꜱ</a>\n◈ ꜰᴜɴ ᴛᴀᴍɪʟ ᴄʜᴀᴛ : <a href=https://t.me/TamilChat_Friendship_47>ʟɪᴛᴛʟᴇ ʜᴇᴀʀᴛꜱ</a></blockquote></b>"
 
 @pr0fess0r_99.on_message(filters.private & filters.command(["start"]))
 async def start(client: pr0fess0r_99, message: Message):
@@ -98,7 +99,7 @@ async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     try:
         pm_caption = (
             f"🎉 **ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ʜᴀs ʙᴇᴇɴ ᴀᴄᴄᴇᴘᴛᴇᴅ ʙʏ @{approvedbot.username}!**\n\n"
-            f"✨ **ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴏʀ ᴛʏᴘᴇ start ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ ❤️**"
+            f"✨ **ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴏʀ ᴛʏᴘᴇ /start ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ ❤️**"
         )
         pm_button = [[InlineKeyboardButton("ᴛʀʏ ᴛᴏ sᴛᴀʀᴛ", url=f"t.me/{approvedbot.username}?start=true")]]
         
