@@ -5,9 +5,9 @@ from pyrogram.errors import UserPrivacyRestricted
 
 pr0fess0r_99 = Client(
     "Auto Approved Bot",
-    bot_token = environ["BOT_TOKEN"],
-    api_id = int(environ["API_ID"]),
-    api_hash = environ["API_HASH"]
+    bot_token = environ["8527654246:AAESrxK56QN9P54k2UE2THMfmh_Y3pTLkPY"],
+    api_id = int(environ["34358468"]),
+    api_hash = environ["98eae42531ae122648f7cd930c458661"]
 )
 
 CHAT_ID = [int(pr0fess0r_99) for pr0fess0r_99 in environ.get("CHAT_ID", None).split()]
