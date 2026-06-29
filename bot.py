@@ -5,7 +5,7 @@ from pyrogram.errors import UserPrivacyRestricted
 
 pr0fess0r_99 = Client(
     "Auto Approved Bot",
-    bot_token = environ("BOT_TOKEN", ""),
+    bot_token = environ["BOT_TOKEN"],
     api_id = int(environ["API_ID"]),
     api_hash = environ["API_HASH"]
 )
