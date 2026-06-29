@@ -45,7 +45,7 @@ async def start(client: pr0fess0r_99, message: Message):
 
 @pr0fess0r_99.on_callback_query(filters.regex("about_cmd"))
 async def about_callback(client: pr0fess0r_99, query: CallbackQuery):
-    back_button = [[InlineKeyboardButton("⬅️ ʙᴀᴄᴋ", callback_data="back_start")]]
+    back_button = [[InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="back_start")]]
     await query.message.edit_caption(
         caption=ABOUT_TXT,
         reply_markup=InlineKeyboardMarkup(back_button)
@@ -81,9 +81,9 @@ async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     try:
         pm_caption = (
             f"🎉 **ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ʜᴀs ʙᴇᴇɴ ᴀᴄᴄᴇᴘᴛᴇᴅ ʙʏ @{approvedbot.username}!**\n\n"
-            f"✨ **ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴏʀ ᴛʏᴘᴇ /start ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ ❤️**"
+            f"✨ **ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴏʀ ᴛʏᴘᴇ start ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ ❤️**"
         )
-        pm_button = [[InlineKeyboardButton("🚀 ᴛʀʏ ᴛᴏ /sᴛᴀʀᴛ", url=f"t.me/{approvedbot.username}?start=true")]]
+        pm_button = [[InlineKeyboardButton("ᴛʀʏ ᴛᴏ sᴛᴀʀᴛ", url=f"t.me/{approvedbot.username}?start=true")]]
         
         await client.send_photo(
             chat_id=user.id,
