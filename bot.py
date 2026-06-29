@@ -5,7 +5,7 @@ from pyrogram.errors import UserPrivacyRestricted
 
 pr0fess0r_99 = Client(
     "Auto Approved Bot",
-    bot_token = environ["BOT_TOKEN"],
+    bot_token = environ("BOT_TOKEN", ""),
     api_id = int(environ["API_ID"]),
     api_hash = environ["API_HASH"]
 )
@@ -15,8 +15,8 @@ TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 # 🖼️ URLs for Images
-START_IMAGE_URL = "https://telegra.ph/file/your_image_link_here.jpg"
-ACCEPT_IMAGE_URL = "https://telegra.ph/file/your_accept_image_link_here.jpg"
+START_IMAGE_URL = "https://graph.org/file/a633dd3e3d423506f2c3a-bd2a06710bc9ad8884.jpg"
+ACCEPT_IMAGE_URL = "https://graph.org/file/f96a490cd143e6e11ff1a-7b378174a3d79ff84b.jpg"
 
 ABOUT_TXT = "<b><blockquote>◈ ᴄʀᴇᴀᴛᴏʀ: <a href=https://t.me/KuttyHacker>ɴꜰᴛ ᴋᴜᴛᴛʏ</a>\n◈ ɴɪɢʜᴛꜰᴀʀ ɴᴇᴛᴡᴏʀᴋ : <a href=https://t.me/NightFarBots>ɴꜰᴛ ᴛᴇᴀᴍ</a>\n◈ ᴛᴀᴍɪʟ ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/KuttyAnimes> ᴋᴜᴛᴛʏ ᴀɴɪᴍᴇꜱ</a>\n◈ ᴀɴɪᴍᴇ ʀᴇ𝚀ᴜꜱᴛ ɢʀᴏᴜᴩ : <a href=https://t.me/Pro_KuttyAnimes>ᴛᴀᴍɪʟ ᴄʜᴀᴛ ᴋᴀᴄ</a>\n◈ ᴛᴀᴍɪʟ ᴍᴏᴠɪᴇꜱ : <a href=https://t.me/UnixLinks>ᴜɴɪ𝘹 ʟɪɴᴋꜱ</a>\n◈ ꜰᴜɴ ᴛᴀᴍɪʟ ᴄʜᴀᴛ : <a href=https://t.me/TamilChat_Friendship_47>ʟɪᴛᴛʟᴇ ʜᴇᴀʀᴛꜱ</a></blockquote></b>"
 
