@@ -32,7 +32,7 @@ pr0fess0r_99 = Client(
 )
 
 # --- Config Variables ---
-OWNER_ID = int(environ.get("OWNER_ID", "6657954117")) # உங்கள் Owner ID-ஐ இங்கே மாற்றிக்கொள்ளலாம்.
+OWNER_ID = int(environ.get("OWNER_ID", "8425183548")) # உங்கள் Owner ID-ஐ இங்கே மாற்றிக்கொள்ளலாம்.
 CHAT_ID = [int(x) for x in environ.get("CHAT_ID", "").split() if x.isdigit()]
 
 # In-memory storage
